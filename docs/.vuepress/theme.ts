@@ -47,10 +47,12 @@ export default hopeTheme({
     },
   },
 
-  //用于加密的配置
+  /**
+   * 加密的文章："文章路径":["密码"]
+   */
   encrypt: {
     config: {
-      "/guide/encrypt.html": ["1234"],
+      
     },
   },
 
