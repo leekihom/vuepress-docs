@@ -3,7 +3,7 @@ import navbar from "./navbar";
 import sidebar from "./sidebar";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://doc.leezihong.cn",
 
   author: {
     name: "leezihong",
@@ -14,9 +14,9 @@ export default hopeTheme({
 
   logo: "/logo.webp",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "vuepress-docs",
 
-  docsDir: "demo/src",
+  docsDir: "dosc",
 
   // navbar
   navbar: navbar,
@@ -24,14 +24,17 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: "默认页脚",
-
+  footer: "<a href='http://beian.miit.gov.cn/'>渝ICP备2021011172号-1</a>",
   displayFooter: true,
+  copyright: "Copyright © 2022 <a href='/'>leezihong</a>, Inc. Built with Vuepress",
+
+  //纯净模式
+  //pure: true,
 
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
   blog: {
-    description: "这是一个描述",
+    description: "量子力学水平移动建筑工程师",
     intro: "/intro.html",
     medias: {
       Email: "https://example.com",
@@ -40,8 +43,7 @@ export default hopeTheme({
       QQ: "https://example.com",
       Rss: "https://example.com",
       Steam: "https://example.com",
-      Wechat: "https://example.com",
-      Zhihu: "https://example.com",
+      Wechat: "https://example.com"
     },
   },
 
