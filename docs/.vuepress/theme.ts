@@ -14,9 +14,9 @@ export default hopeTheme({
 
   logo: "/logo.webp",
 
-  repo: "vuepress-docs",
+  repo: "leekihom",
 
-  docsDir: "dosc",
+  docsDir: "docs",
 
   // navbar
   navbar: navbar,
