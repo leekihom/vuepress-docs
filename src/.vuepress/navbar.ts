@@ -4,8 +4,9 @@ export default navbar([
   "/",
   { 
     text: "文章", 
-    icon: "creative", 
-    link: "/docs/" 
+    icon: "code", 
+    link: "/docs/",
+    activeMatch: "^/docs/$",
   },
   { 
     text: "随笔", 

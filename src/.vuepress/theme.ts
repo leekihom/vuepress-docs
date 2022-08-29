@@ -1,6 +1,6 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar";
-import sidebar from "./sidebar";
+import { SidebarConfig } from "./sidebar";
 
 export default hopeTheme({
   hostname: "https://doc.leezihong.cn",
@@ -22,7 +22,7 @@ export default hopeTheme({
   navbar: navbar,
 
   // sidebar
-  sidebar: sidebar,
+  sidebar: SidebarConfig,
 
   footer: "<a href='http://beian.miit.gov.cn/'>渝ICP备2021011172号-1</a>",
   displayFooter: true,
@@ -35,7 +35,7 @@ export default hopeTheme({
 
   blog: {
     description: "量子力学水平移动建筑工程师",
-    intro: "/about/aboutme.md",
+    intro: "/about/aboutme",
     medias: {
       Email: "https://example.com",
       GitHub: "https://example.com",

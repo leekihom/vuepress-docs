@@ -7,7 +7,7 @@ heroImage: /logo.webp
 heroText: leezihong
 heroFullScreen: true
 bgImage: /bg.jpg
-tagline: 
+tagline: 工作996 生病ICU 加班不规范 亲人两行泪
 # projects:
 #   - icon: project
 #     name: 项目名称

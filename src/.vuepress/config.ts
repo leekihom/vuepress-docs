@@ -4,7 +4,7 @@ import theme from "./theme";
 export default defineUserConfig({
   lang: "zh-CN",
   title: "leezihong",
-  description: "vuepress-theme-hope 的演示",
+  description: "",
 
   base: "/",
 
