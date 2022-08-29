@@ -1,7 +1,10 @@
 ---
 icon: people
 title: 关于我
-date: 2022-08-24
+breadcrumb: false
+toc: false
+sidebar: false
+pageInfo: false
 ---
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=Hello%20World!%20😜&width=800&height=400)](https://github.com/Akshay090/svg-banners)
 
@@ -17,7 +20,7 @@ date: 2022-08-24
 
 ### 🚀 正在学习
 ![Netty](https://img.shields.io/badge/Netty-black?logo=netty) ![Vue.js](https://img.shields.io/badge/Vue.js-black?logo=vuedotjs) 
-### 👨‍💻 GitHub
+### 🌈 GitHub
 ![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=leekihom&theme=github)
 
 ### 💬 联系我

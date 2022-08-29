@@ -15,18 +15,11 @@ export default navbar([
   {
     text: "工具",
     icon: "tool",
-    link: "tool/tool"
+    link: "/tool/tool"
   },
   {
     text: "关于",
     icon: "info",
-    prefix: "/about/",
-    children: [
-      {
-        text: "关于我",
-        icon: "people",
-        link:"aboutme"
-      },
-    ],
+    link: "/about/aboutme"
   },
 ]);

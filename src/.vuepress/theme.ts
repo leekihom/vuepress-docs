@@ -16,7 +16,7 @@ export default hopeTheme({
 
   repo: "leekihom",
 
-  docsDir: "docs",
+  docsDir: "src",
 
   // navbar
   navbar: navbar,
@@ -35,7 +35,7 @@ export default hopeTheme({
 
   blog: {
     description: "量子力学水平移动建筑工程师",
-    intro: "/intro.html",
+    intro: "/about/aboutme.md",
     medias: {
       Email: "https://example.com",
       GitHub: "https://example.com",
