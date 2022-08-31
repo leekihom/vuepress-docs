@@ -9,4 +9,5 @@ export default defineUserConfig({
   base: "/",
 
   theme,
+  
 });

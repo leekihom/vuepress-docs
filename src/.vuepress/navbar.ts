@@ -16,7 +16,7 @@ export default navbar([
   {
     text: "工具",
     icon: "tool",
-    link: "/tool/tool"
+    link: "tool/tool"
   },
   {
     text: "关于",
