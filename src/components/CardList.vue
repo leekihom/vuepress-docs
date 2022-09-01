@@ -53,9 +53,7 @@
   box-shadow: 3px 2px 5px rgb(0 0 0 / 8%);
   transition: all .4s;
 }
-.row-3{
-  width: calc(33.33333% - .7rem);
-}
+
 
 </style>
 <script>
@@ -106,7 +104,7 @@ export default {
   <div class="card-list">
 
     <a v-for="item in list" :key="item.name"
-    class="card-item row-3" :href="item.href" target="_blank" :style="{'background-image': item.bgColor,color: item.color}">
+    class="card-item" :href="item.href" target="_blank" :style="{'background-image': item.bgColor,color: item.color}">
       <img
         :src="item.logo"
         :alt="item.name"
