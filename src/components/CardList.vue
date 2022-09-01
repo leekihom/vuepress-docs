@@ -12,7 +12,7 @@
 }
 .card-item{
   margin: .35rem;
-  border-radius:  3px;
+  border-radius:  10px;
   display: flex;
   transition: all .4s;
 }

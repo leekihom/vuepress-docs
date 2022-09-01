@@ -1,8 +1,7 @@
 ---
 home: true
 layout: Blog
-icon: home
-title: 主页
+title: 🏠主页
 heroImage: /logo.webp
 heroText: leezihong
 heroFullScreen: true
