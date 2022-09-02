@@ -21,11 +21,11 @@ pageInfo: false
 ### 🚀 正在学习
 ![Netty](https://img.shields.io/badge/Netty-black?logo=netty) ![Vue.js](https://img.shields.io/badge/Vue.js-black?logo=vuedotjs) 
 ### 🌈 GitHub
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=leekihom&theme=github)
+![GitHub](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=leekihom&theme=github)
 
 ### 💬 联系我
 
-📮 邮箱：leelzh@foxmail.com 
+📮 邮箱：<a href="mailto:leelzh@foxmail.com" style="text-decoration: none">leelzh@foxmail.com</a>
 
-🐧 QQ：2578527296
+🐧 QQ：<a href="tencent://message/?uin=undefined&amp;Site=&amp;Menu=yes" style="text-decoration: none">2578527296</a>
 

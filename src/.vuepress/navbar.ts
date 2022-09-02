@@ -13,7 +13,7 @@ export default navbar([
   },
   {
     text: "🔧工具",
-    link: "/tool/tool"
+    link: "/tool/tool/"
   },
   {
     text: "🌟关于",
