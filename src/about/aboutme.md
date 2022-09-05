@@ -5,6 +5,7 @@ breadcrumb: false
 toc: false
 sidebar: false
 pageInfo: false
+article: false
 ---
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=Hello%20World!%20😜&width=800&height=400)](https://github.com/Akshay090/svg-banners)
 

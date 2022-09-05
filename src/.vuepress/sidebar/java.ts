@@ -2,10 +2,12 @@ import { arraySidebar } from "vuepress-theme-hope";
 
 export const java = arraySidebar([
   {
-    text: "测试sidebar",
-    icon: "info",
+    text: "Java",
+    icon: "code",
     link: "/docs/",
     prefix: "/docs/",
-    children: ["1test", "2test"],
+    children: [
+      "Java并发-理论基础", 
+    ],
   },
 ]);

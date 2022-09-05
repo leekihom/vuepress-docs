@@ -1,6 +1,5 @@
 ---
 pageInfo: false
-article: false
 ---
 ## **学习**
 
