@@ -9,11 +9,11 @@ article: false
 ---
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=Hello%20World!%20😜&width=800&height=400)](https://github.com/Akshay090/svg-banners)
 
-👨‍💻
+👨‍💻 从前是量子力学水平移动建筑工程师，现在是富土康一号流水线🥇金牌螺丝工转行菜鸡Coder
 
-🌱
+🌱 边搬钢筋边学习，早打螺丝晚造航母
 
-💻
+💻 努力学习，奥利给！
 
 ### 📚 技术栈
 ![MySQL](https://img.shields.io/badge/MySQL-black?logo=mysql) ![Oracle](https://img.shields.io/badge/Oracle-black?logo=oracle) ![JavaScript](https://img.shields.io/badge/JavaScript-black?logo=javascript) ![Spring](https://img.shields.io/badge/Spring-black?logo=spring) ![Mybatis](https://img.shields.io/badge/Mybatis-black?logo=mybatis) ![Java](https://img.shields.io/badge/Java-black?logo=java) ![Git](https://img.shields.io/badge/Git-black?logo=git) ![Maven](https://img.shields.io/badge/Maven-black?logo=apachemaven) ![jQuery](https://img.shields.io/badge/jQuery-black?logo=jquery) ![Redis](https://img.shields.io/badge/Redis-black?logo=redis) ![Node.js](https://img.shields.io/badge/Node.js-black?logo=nodedotjs) 

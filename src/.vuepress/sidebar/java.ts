@@ -6,6 +6,7 @@ export const java = arraySidebar([
     icon: "code",
     link: "/docs/",
     prefix: "/docs/",
+    collapsable: true,
     children: [
       "Java并发-理论基础", 
     ],
