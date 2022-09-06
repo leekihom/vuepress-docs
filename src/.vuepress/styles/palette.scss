@@ -7,3 +7,18 @@ $content-width: 860px;
 .site-name{
     font-family: 'iconfont';
 }
+blockquote, body{
+    font-size: 0.95rem;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: 600;
+}
+// div[class*=language-].line-numbers-mode{
+//     font-size: 16px;
+// }
+// div[class*=language-].line-numbers-mode .line-number{
+//     height: unset;
+// }
+// div[class*=language-].line-numbers-mode .line-numbers{
+//     padding: 1rem 0;
+// }
