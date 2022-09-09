@@ -1,10 +1,10 @@
 ---
 title: Java学习
 icon: code
-star: true
-sticky: 20
+toc: false
 pageInfo: false
 breadcrumb: false
+article: false
 ---
 ### 并发基础
 - [理论基础](/docs/Java并发-理论基础.md)
