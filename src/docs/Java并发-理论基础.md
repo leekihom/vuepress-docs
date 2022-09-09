@@ -6,7 +6,7 @@ pageInfo: false
 
 ---
 
-# Java 并发 - 理论基础
+# Java并发-理论基础
 
 ## Java并发常见面试题
 
@@ -23,6 +23,7 @@ pageInfo: false
 在 Java 中，可以借助 `synchronized` 、`volatile` 以及各种 `Lock` 实现可见性。
 
 如果我们将变量声明为 `volatile` ，这就指示 JVM，这个变量是共享且不稳定的，每次使用它都到主存中进行读取。
+
 ```java :no-line-numbers
 //thread 1
 int i = 0;
@@ -31,9 +32,11 @@ i = 2;
 //thread 2
 j = i;
 ```
+
 如果先执行线程1的是CPU1，会把int i = 0;加载到CPU1，然后再给i赋值2，但是还未将结果写入主存之中，如果此时CPU2执行线程2，就先去读取主存的数据，j=2;线程修改数据之后，其他的线程并没有立即看到修改后的值。
 
 ### 原子性：分时复用引起
+
 原子性：即一个操作或者多个操作 要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。即使在多个线程一起执行的时候，一个操作一旦开始，就不会被其他线程所干扰。
 
 ```java :no-line-numbers
@@ -44,6 +47,7 @@ i += 1;
 //线程2执行
 i += 1;
 ```
+
 如果要执行`i += 1`需要三条CPU指令
 
 1.将变量i读取到CPU寄存器  
@@ -59,11 +63,12 @@ i += 1;
 
 有序性：即程序执行的顺序按照代码的先后顺序执行。但是由于指令重排序，所以代码的执行顺序未必就是编写代码时的顺序。
 
-在执行程序时为了提高性能，编译和处理器常常会对指令做重排序。重排序分三种类型：      
+在执行程序时为了提高性能，编译和处理器常常会对指令做重排序。重排序分三种类型：
 
 - 编译器优化重排序：编译器（包括 JVM、JIT 编译器等）在不改变单线程程序语义的前提下，重新安排语句的执行顺序
 - 指令并行重排序：现代处理器采用了指令级并行技术(Instruction-Level Parallelism，ILP)来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序
 - 内存系统重排序：由于处理器使用缓存和读 / 写缓冲区，这使得加载和存储操作看上去可能是在乱序执行
+
 > 指令重排序可以保证串行语义一致，但是没有义务保证多线程间的语义也一致 ，所以在多线程下，指令重排序可能会导致一些问题。
 
 从源码到最终执行会的过程：  
@@ -71,8 +76,11 @@ i += 1;
 
 ## Java是怎么解决并发问题的：JMM（Java内存模型）
 
-
+CPU在执行指令的时候首先将数据写入Cache中，但是当多线程执行的时候，多个线程读取Cache中数据处理后返回到主存中是，会造成数据不一致的问题，Java Memory Model(JMM Java内存模型)就此应运而生，Java为了解决在并发编程时内存不一致的问题定义了一些规范来解决这些问题，对开发人员而言就是:  
+- [volatile、synchronized 和 final 三个关键字]()
+- happens-before 原则
 
 ## 参考
-1. JavaGuide https://javaguide.cn/java/concurrent/jmm.html
-2. Java 并发 - 理论基础 | Java 全栈知识体系 https://www.pdai.tech/md/java/thread/java-thread-x-theorty.html
+
+1. JavaGuide <https://javaguide.cn/java/concurrent/jmm.html>
+2. Java 并发 - 理论基础 | Java 全栈知识体系 <https://www.pdai.tech/md/java/thread/java-thread-x-theorty.html>
