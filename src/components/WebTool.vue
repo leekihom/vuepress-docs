@@ -19,7 +19,12 @@ export default {
                 //bgColor: 'linear-gradient(0deg,#a18cd1 0%, #fbc2eb 100%)',
                 //color: ' rgb(104, 84, 161)',
               },
-              
+              {
+                name: 'Vercel',
+                desc: 'Develop. Preview. Ship. For the best frontend teams – Vercel',
+                logo: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
+                href: 'https://vercel.com/',
+              },
           ]
     }
   }
