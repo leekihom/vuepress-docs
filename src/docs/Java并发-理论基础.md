@@ -77,10 +77,31 @@ i += 1;
 ## Java是怎么解决并发问题的：JMM（Java内存模型）
 
 CPU在执行指令的时候首先将数据写入Cache中，但是当多线程执行的时候，多个线程读取Cache中数据处理后返回到主存中是，会造成数据不一致的问题，Java Memory Model(JMM Java内存模型)就此应运而生，Java为了解决在并发编程时内存不一致的问题定义了一些规范来解决这些问题，对开发人员而言就是:  
-- [volatile、synchronized 和 final 三个关键字]()
+- [volatile、synchronized 和 final 三个关键字](/src/info.md)
 - happens-before 原则
+  
+Java内存模型确保的在基础 读取/赋值 是原子性操作，但是其他的操作如果也需要保持原子性的话就需要使用`synchronized`,`Lock`来实现，因为`synchronized`,`Lock`能够保证在同一时刻只有一个线程来操作代码(块)从而能够在大范围的实现原子性；`synchronized`,`Lock`也可以保证可见性，因为加锁后会清空工作内存中的值,解锁之后就会从新将值刷新到主存中，使用`volatile`修饰共享变量可以在变量被修改之后立即刷新到主存中。
+
+## happens-before 原则
+
+happens-before原则表达的意义是不管前一个操作和后一个操作是否在同一线程中，前一个线程的结果对于下一个操作都是可见的。
+
+> tips:下面这几个原则名字不重要，翻译不同而已，理解核心意思即可！！！！
+
+1.程序顺序原则(Program Order Rule):程序书写的顺序即是运行的顺序  
+2.管程锁定原则(Monitor Lock Rule):一个 解锁 操作先行发生于后面对`同一个锁`的 加锁 操作  
+3.volatile 变量原则(Volatile Variable Rule):一个volatile变量的写操作发生在读操作之前  
+4.线程启动原则(Thread Start Rule):Thread对象的任何操作都在start()之后    
+5.线程加入规则(Thread Join Rule):Thread 对象的结束先行发生于其他线程的join() 方法返回之前  
+6.线程中断原则(Thread Interruption Rule):对线程 interrupt () 方法的调用先行发生于被中断线程的代码检测到中断事件的发生，可以通过 Thread.interrupted () 方法检测到是否有中断发生   
+7.对象终结原则(Finalizer Rule):一个对象的初始化完成(构造函数执行结束)先行发生于它的 finalize() 方法的开始    
+8.传递性(Transitivity):操作的发生顺序具有传递性，如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 先行发生于操作 C   
+
+> tips: continue------->
+
 
 ## 参考
 
 1. JavaGuide <https://javaguide.cn/java/concurrent/jmm.html>
 2. Java 并发 - 理论基础 | Java 全栈知识体系 <https://www.pdai.tech/md/java/thread/java-thread-x-theorty.html>
+3. 多线程篇-线程安全-原子性、可见性、有序性解析 <https://zhuanlan.zhihu.com/p/142929863>
