@@ -105,9 +105,37 @@ public ResponseEntity updatePartially(@PathVariable("id") Long id, @RequestBody 
 
 ### 4. 前后端传值
 #### 1. @PathVariable 和 @RequestParam
+`@PathVariable`用于获取路径参数({}中的参数)，`@RequestParam`用于获取查询参参数(请求地址?后面的参数)。
+```java :no-line-numbers
+@GetMapping("/user/{name}")
+public List<User> GetUserList(
+	@PathVariable("name") String name,
+	@RequestParam(value = "sex") char sex){
+		...
+}
 
+//URL:/user/leezihong?sex=0
 
+```
+获取到的数据：`name:leezihong,sex：0`
 
+#### 2. @RequestBody
+用于读取Request请求(除GET请求，因为GET请求没有请求体即body部分)的body部分并且Content-Type 为 application/json 格式的数据，接收到的数据会自动绑定到Java对象上面。其中起到转换绑定作用的就是`HttpMessageConverter`。
+```Java :no-line-numbers
+@PostMapping("/sign")
+public ResponseEntity sign(@RequestBody User user){
+	userService.sign(user);
+	...
+	return ResponseEntity.OK.build();
+}
+```
+> 一般情况下，或者说是系统设计正确的情况下，一个请求方法只能有一个`@RequestBody`
+
+### 5.配置文件相关
+#### 1. @Value
+直接读取配置文件的参数`@Value("${property}")`
+#### 2. @ConfigurationProperties
+`@ConfigurationProperties`读取配置是配置读取相对比较安全的方式，主要通过`prefix`来读取匹配到前缀的所有参数，注解常作用于类中，将配置参数读取为一个类，此时也可以使用`@Component`将该类注册为一个组件。也可作用于方法，常用场景为读写分离。
 
 ## 参考
 
