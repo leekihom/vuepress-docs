@@ -136,6 +136,61 @@ public ResponseEntity sign(@RequestBody User user){
 直接读取配置文件的参数`@Value("${property}")`
 #### 2. @ConfigurationProperties
 `@ConfigurationProperties`读取配置是配置读取相对比较安全的方式，主要通过`prefix`来读取匹配到前缀的所有参数，注解常作用于类中，将配置参数读取为一个类，此时也可以使用`@Component`将该类注册为一个组件。也可作用于方法，常用场景为读写分离。
+```yml :no-line-numbers
+students:
+  school: school1
+  user:
+    - id: 1
+      name: echo
+    - id: 2
+      name: leezihong
+```
+- 使用在类上
+  
+``` java :no-line-numbers
+
+@Data
+@Component
+@ConfigurationProperties(prefix = "students")
+public class Stubase {
+    private String school;
+    private List<User> user;
+}
+
+```
+- 使用在方法上，需要结合`@Bean`和`@Configuration`来使用，需要先使用`@Configuration`将类注册为一个配置类
+``` java :no-line-numbers
+@RestController
+@Configuration
+public class exp {
+
+    @Bean
+    @ConfigurationProperties(prefix = "students")
+    public Stubase stubase() {
+        return  new Stubase();
+    }
+    /**
+     * 在方法上使用
+     */
+    @GetMapping("/getInfo")
+    public Stubase geting()  {
+        return stubase();
+    }
+}
+
+```
+![20220916150208](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20220916150208.png)
+
+#### 3. @PropertySource
+`@PropertySource`读取指定 properties 文件
+```java :no-line-numbers
+@PropertySource("classpath:website.properties")
+```
+
+### 6. 参数校验
+#### 1. @Validated
+
+使用在类上，如果一个类包含另一个类，也可以使用`@Validated`
 
 ## 参考
 
