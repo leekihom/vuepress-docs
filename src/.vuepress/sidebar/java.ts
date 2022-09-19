@@ -10,6 +10,8 @@ export const java = arraySidebar([
     children: [
       "Java并发-理论基础", 
       "Spring&SpringBoot注解总结",
+      "SpringBoot全局异常处理",
+      "IO基础知识",
     ],
   },
 ]);

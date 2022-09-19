@@ -192,6 +192,12 @@ public class exp {
 
 使用在类上，如果一个类包含另一个类，也可以使用`@Validated`
 
+### 7. 异常处理
+[SpringBoot全局异常处理](SpringBoot全局异常处理.md)
+
+### 8. 数据持久相关
+
+
 ## 参考
 
 1. Java架构师宝典 [Spring 最常用的 7 大类注解](https://mp.weixin.qq.com/s/zLK-2jAPBfjuJgDv10n8vA)
