@@ -185,7 +185,7 @@ BufferedReader(Reader in) 创建使用默认大小的输入缓冲区的缓冲字
 BufferedReader(Reader in, int sz) 创建使用指定大小的输入缓冲区的缓冲字符输入流。  
 **方法列表**  
 void close() 关闭流并释放与之相关联的任何系统资源。  
-Stream<String> lines() 返回一个 Stream ，其元素是从这个 BufferedReader读取的行。  
+`Stream<String> lines()` 返回一个 Stream ，其元素是从这个 BufferedReader读取的行。  
 void mark(int readAheadLimit) 标记流中的当前位置。  
 boolean markSupported() 告诉这个流是否支持mark（）操作。  
 int read() 读一个字符   
