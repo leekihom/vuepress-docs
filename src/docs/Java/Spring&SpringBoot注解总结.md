@@ -196,6 +196,190 @@ public class exp {
 [SpringBoot全局异常处理](SpringBoot全局异常处理.md)
 
 ### 8. 数据持久相关
+**JPA常用注解**  
+```info :no-line-numbers
+@Entity
+@Table
+@Basic
+@Column
+@GeneratedValue
+@Id
+@Transient
+@Temporal
+@OneToMany
+@ManyToOne
+@ManyToMany
+@Query
+@Modifying
+```
+#### @Entity和@Table
+声明一个类对应一个数据库实体，如果没有使用`@Table`声明表名的就会使用`@Entity`对应的表明来作为数据表的名字。
+
+#### @Id和@GeneratedValue
+声明一个字段为主键，并不是只有Id才可以使用，`@GeneratedValue`定义生成策略
+```java
+public enum GenerationType { 
+
+    /**
+     * 使用一个特定的数据库表格来保存主键
+     */
+    TABLE, 
+
+    /**
+     * 使用序列(sequence)机制生成主键
+     */
+    SEQUENCE, 
+
+    /**
+     * 主键自增长
+     */
+    IDENTITY, 
+
+    /**
+     * 把生成策略交给持久化引擎
+     */
+    AUTO
+}
+
+```
+
+#### @Lob
+声明某个字段为大字段
+
+```java :no-line-numbers
+@Entity
+@Table(name = "User")
+public class User extends BaseEntity {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    //给字段定义一个数据表中的字段名字，不使用name则默认类的字段名
+    @Column(name = "name",nullable = false,length = 16)
+    private String name;
+
+    @Column(name = "password")
+    private String password;
+
+    //声明该字段不用持久化
+    @Transient
+    private float height;
+
+    @Column
+    private int sex;
+
+    //声明该字段为大字段，
+    @Lob
+    @Basic(fetch=LAZY)
+    @Column
+    private byte[] info;
+
+    @Lob
+    @Basic(fetch=LAZY)
+    @Column
+    private String comments;
+}
+
+```
+![微信截图_20220919171335](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/微信截图_20220919171335.png)
+
+#### 关联关系
+`@JoinColumn`：用来指定与所操作实体或实体集合相关联的数据库表中的列字段  
+`@OneToOne`:一对一关系  
+
+`@OneToMany`:一对多关系  
+
+`@ManyToOne`:多对一关系  
+
+`@ManyToMany`:多对多关系  
+
+
+### 9. 审计功能
+
+审计功能主要作用就是查看更改，可以查看数据的修改记录  
+`@EnableJpaAuditing`：开启 JPA 审计功能  
+`@CreatedDate`：创建时间字段，数据被insert的时候会设置值  
+`@CreatedBy `:创建人字段，数据被insert的时候会设置值  
+`@LastModifiedDate`,`@LastModifiedBy`,同理
+
+```java :no-line-numbers
+@SpringBootApplication
+@EnableJpaAuditing
+public class JpaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(JpaApplication.class, args);
+    }
+    @Bean
+    public User setUserAuditorAware(){
+        return new User();
+    }
+}
+
+```
+
+```java :no-line-numbers
+@Data
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public class BaseEntity implements Serializable {
+
+    @CreatedBy
+    @Column(name = "create_by", updatable = false)
+    private String createBy;
+
+    @LastModifiedBy
+    @Column(name = "update_by")
+    private String updateBy;
+
+    @CreationTimestamp
+    @Column(name = "create_time", updatable = false)
+    private Timestamp createTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_time")
+    private Timestamp updateTime;
+}
+```
+### 10. 数据修改/删除与事务
+`@Modifying`提示改操作时修改操作，常与`@Transactional`或`@Query`等配合使用  
+> `@Query`可以使用原生SQL语句  
+```java :no-line-numbers
+@Modifying
+@Transactional
+public void delete(){
+    ....
+}
+
+
+@Modifying
+@Query("UPDATE User set name = ?1")
+int updateUser(String name);
+...
+
+```
+`@Transactional`：  
+作用于类：当把`@Transactional` 注解放在类上时，表示所有该类的 public 方法都配置相同的事务属性信息  
+作用于方法:当类配置了``@Transactional``，方法也配置了``@Transactional``，方法的事务会覆盖类的事务配置信息  
+
+
+### 11. json数据处理
+
+`@JsonIgnoreProperties`:作用在类上用于过滤掉特定字段不返回或者不解析 
+`@JsonIgnore`:一般用于类的属性上，作用和上面的`@JsonIgnoreProperties` 一样 
+`@JsonFormat`:格式化 json 数据  
+
+```java :no-line-numbers
+@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="GMT")
+private Date date;
+
+```
+`@JsonUnwrapped`:扁平化json数据对象
+
+
+
 
 
 ## 参考
