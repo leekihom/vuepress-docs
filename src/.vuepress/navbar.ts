@@ -4,8 +4,26 @@ export default navbar([
   "/",
   { 
     text: "📖文章", 
-    link: "/docs/",
-    activeMatch: "^/docs/$",
+    prefix: "/docs/",
+    //activeMatch: "^/docs/$",
+    children: [
+      {
+        text:"前端",
+        link:"frontEnd",
+      }, 
+      {
+        text:"后端",
+        link:"backEnd",
+      },
+      {
+        text:"中间件",
+        link:"middleware",
+      },
+      {
+        text:"杂项",
+        link:"others",
+      },
+    ],
   },
   { 
     text: "✍随笔", 

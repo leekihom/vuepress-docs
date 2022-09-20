@@ -1,7 +1,7 @@
 import { sidebar } from "vuepress-theme-hope";
-import { java } from "./java";
+import { backEnd } from "./backEnd";
 
 export const SidebarConfig = sidebar({
   
-    "/docs/": java,
+    "/docs/": backEnd,
   });
