@@ -286,16 +286,181 @@ public class User extends BaseEntity {
 ![微信截图_20220919171335](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/微信截图_20220919171335.png)
 
 #### 关联关系
+> 关联关系说白了就是数据库表与表的主键外键的设置。  
+
 `@JoinColumn`：用来指定与所操作实体或实体集合相关联的数据库表中的列字段  
+name：外键列的名称，默认情况下是：引用实体的字段名称 +“_”+ 被引用的主键列的名称。一般也可以自定义，一般见名知意，就可以采用默认值。  
+referencedColumnName：参考列，默认值是关联表的主键。
+
 `@OneToOne`:一对一关系  
+cascade:
+- ALL：所有操作都进行关联操作
+- PERSIST：插入操作时才进行关联操作
+- REMOVE：删除操作时才进行关联操作
+- MERGE：修改操作时才进行关联操作  
+  
+fetch:
+- FetchType.EAGER表示关系类(本例是OrderItem类)在主类加载的时候同时加载
+- FetchType.LAZY表示关系类在被访问时才加载。默认值是FetchType.LAZY。
 
-`@OneToMany`:一对多关系  
+```java :no-line-numbers
+//User
 
-`@ManyToOne`:多对一关系  
+@Entity
+@Table(name = "User")
+public class User extends BaseEntity {
+
+    @Id
+    @Column(name = "userId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    //给字段定义一个数据表中的字段名字，不使用name则默认类的字段名
+    @Column(name = "name",nullable = false,length = 16)
+    private String name;
+
+    @Column(name = "password")
+    private String password;
+
+    //声明该字段不用持久化
+    @Transient
+    private float height;
+
+    @Column
+    private Integer sex;
+
+    //声明该字段为大字段，
+    @Lob
+    @Basic(fetch=LAZY)
+    @Column
+    private byte[] info;
+
+    @Lob
+    @Basic(fetch=LAZY)
+    @Column
+    private String comments;
+
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_Id",referencedColumnName = "addressId")
+    private Address address;
+}
+
+
+//Address
+
+@Entity
+@Table(name = "Address")
+public class Address extends BaseEntity{
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "addressId")
+    private Integer addressId;
+
+    @Column(name = "addressNmame")
+    private String addressNmame;
+
+    @Column(name = "addressInfo")
+    private String addressInfo;
+}
+```
+![20220920125330](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20220920125330.png)
+
+`@OneToMany`:一对多关系和`@ManyToOne`:多对一关系  
+在JPA的对多关系中，这种关系(外键映射)主要有多端来维护(例如作者和文章关系，文章删除了对作者的表不会有任何影响，但是如果不由多端来维护，作者表被删除了，文章表链接的作者信息就会出错)。  
+一端(Author)使用@OneToMany注释的mappedBy="author"(多端链接的字段)属性表明Author是关系被维护端。  
+多端(Article)使用@ManyToOne和@JoinColumn来注释属性 author,@ManyToOne表明Article是多端，@JoinColumn设置在article表中的关联字段(外键)。  
+
+```java :no-line-numbers
+@Data
+@Entity
+@Table(name = "Author")
+public class Author {
+
+    @Id
+    @Column(name = "id")
+    private Long id;
+
+    //One To Many' attribute type should be a container
+    @OneToMany(mappedBy = "author")
+    private List<Article> articlelist;
+
+}
+
+
+@Data
+@Entity
+@Table(name = "Article")
+public class Article{
+
+    @Id
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "article_id")
+    private Long article_id;
+
+    @Column(name = "article_name")
+    private String article_name;
+
+    @ManyToOne
+    @JoinColumn
+    private Author author;
+}
+
+
+``` 
+![20220920133925](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20220920133925.png)
 
 `@ManyToMany`:多对多关系  
+多对多的关系可以任意指定一方来维护  
+`@JoinTable`  
+    作用：针对中间表的配置  
+    属性：  
+        name：配置中间表的名称  
+        joinColumns：中间表的外键字段关联当前实体类所对应表的主键字段                  
+        inverseJoinColumn：中间表的外键字段关联对方表的主键字段  
+```java :no-line-numbers
+@Data
+@Entity
+@Table(name = "Course")
+public class Course {
 
+    @Id
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "Course_name")
+    private String name;
+
+    @JoinTable(name = "course_student",joinColumns = @JoinColumn(name = "Course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @ManyToMany
+    private List<Student> studentList;
+
+}
+
+@Data
+@Entity
+@Table(name = "Student")
+public class Student {
+
+    @Id
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "Student_name")
+    private String name;
+
+    @ManyToMany(mappedBy = "studentList")
+    private List<Course> courseList;
+}
+
+```
 ### 9. 审计功能
 
 审计功能主要作用就是查看更改，可以查看数据的修改记录  
@@ -387,4 +552,4 @@ private Date date;
 1. Java架构师宝典 [Spring 最常用的 7 大类注解](https://mp.weixin.qq.com/s/zLK-2jAPBfjuJgDv10n8vA)
 2. Java全栈知识体系[SpringBoot入门 - 开发中还有哪些常用注解 | Java 全栈知识体系 (pdai.tech)](https://pdai.tech/md/spring/springboot/springboot-x-hello-anno.html#springboot入门---开发中还有哪些常用注解)
 3. JavaGuide [Spring&SpringBoot常用注解总结 | JavaGuide](https://javaguide.cn/system-design/framework/spring/spring-common-annotations.html#_0-前言)
-
+4. [Spring-Data-Jpa](https://www.ydlclass.com/doc21xnv/frame/jpa/jpa.html)
