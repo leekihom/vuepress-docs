@@ -1,6 +1,6 @@
 ---
 title: 常用的Lambda表达式用法
-date: 2022-9-28
+date: 2022-09-28
 breadcrumb: false
 pageInfo: false
 category:
