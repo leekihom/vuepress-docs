@@ -12,12 +12,7 @@ export default {
     return {
       items: [
               {
-                name: '',
-                desc: '',
-                logo: '',
-                href: '',
-                bgColor: '',
-                //color: ' rgb(104, 84, 161)',
+                
               },
               
           ]
