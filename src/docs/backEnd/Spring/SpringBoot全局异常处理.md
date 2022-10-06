@@ -116,7 +116,6 @@ OK，现在返回的对象没有问题，那么就是应该来拦截处理异常
 
 ## 定义一个异常处理类
 `@RestControllerAdvice`注解就是将`@ControllerAdvice`+`@ResponseBody`的集合体，将类注册为一个异常处理类并且使用JSON格式返回响应。  
-`@ExceptionHandler`用于接收指定的异常类型，
 ``` java :no-line-numbers
 @RestControllerAdvice
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
@@ -144,13 +143,31 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         return ResultData.success(o);
     }
 
-    //接受服务器异常
+
+}
+
+```
+再次请求一个报错的接口，看看返回报错的情况是什么
+![20221006170242](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221006170242.png)
+emm.....感觉好像有点问题，这个接口本来是报错的，但是为啥外层还是请求成功，想想其实也合理，请求是链接上的，并且已经处理了，但是返回给前端使用的话这样就是有问题的
+
+## 全局异常处理
+定义一个全局异常处理类,用来全局处理异常,`@ExceptionHandler`用于接收指定的异常类型,`@ResponseStatus`指定客户端收到的http状态码
+```java :no-line-numbers
+
+//接受服务器异常
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResultData<String> exception(Exception e) {
         return ResultData.fail(ResultCode.INTERNAL_SERVER_ERROR);
     }
 
-}
-
 ```
+
+## 异常接入返回的标准格式
+
+`beforeBodyWrite`类在异常处理的时候，将异常分一下类，如果是我们自己已经封装了的异常对象，就直接返回，如果没有封装的就进行封装一下。
+![20221006172911](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221006172911.png)
+
+## 总结
+全局异常处理，主要是将返回对象的标准制定好，然后再使用`@RestControllerAdvice`注解来全局异常拦截，最后在返回的时候将返回对象归类，未被封装的对象要封装，封装好的对象直接返回。
