@@ -7,7 +7,7 @@ sidebar: false
 pageInfo: false
 article: false
 ---
-[![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=Hello%20World!%20😜&width=800&height=400)](https://github.com/Akshay090/svg-banners)
+[![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=Hey%20Yo!%20😜&width=800&height=400)](https://github.com/Akshay090/svg-banners)
 
 👨‍💻 从前是量子力学水平移动建筑工程师，现在是富土康一号流水线🥇金牌螺丝工转行菜鸡Coder
 
