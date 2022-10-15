@@ -41,7 +41,7 @@ Stream的操作一般就是创建流，处理流数据，终止或输出。
 | peek() | 对stream流中的每个元素进行逐个遍历处理，返回处理后的stream流 |
 
 - 终止管道
-  数据处理完成后Stream流结束，此时可以进行数据输出或者进行其他逻辑的处理。
+  数据处理完成后Stream流结束，此时可以进行数据输出或者进行其他逻辑的处理。一旦Stream被执行了终止操作之后，就不能够再进行其他的操作了。
 
 |  API   | 功能说明  |
 |  ----  | ----  |
@@ -110,7 +110,54 @@ peek和foreach都是遍历元素并且逐个处理，但是peek为中间管道�
 ```
 ![20221015113430](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221015113430.png)
 
+### 其他的常用方法
+map将数据的类型进行转换，filter按条件过滤数据，sorted排序，distinct去重，limit取前面的n个元素，最后使用collect转换数据。
+
+```java :no-line-numbers
+@Test
+    public void otherTest() {
+        List<String> list = Arrays.asList("205","10","308","49","627","193","111", "193","308","193");
+        List<Integer> newList = list.stream()
+                .map(Integer::valueOf)
+                .filter(item -> item> 70)
+                .sorted(Comparator.comparingInt(s -> s))
+                .distinct()
+                .limit(4)
+                .collect(Collectors.toList());
+        System.out.println(newList);
+    }
+```
+
+### 结果收集方法
+collect用于结果的收集，它接受`集合`，`StringBuilder对象`等。。。，
+
+```java :no-line-numbers
+@Test
+    public void toCollector(){
+        List<User> users = Arrays.asList(new User("啊哈"),new User("嗯哼"),new User("哈哈"));
+        String user = users.stream()
+                .map(User::getName)
+                .collect(Collectors.joining(",","(",")"));
+        System.out.println(user);
+    }
 
 
+```
+## 并行流
+
+并行流可以将原本的单个Stream划分为多个片段，然后对各个片段进行处理，最后将每个片段的运行结果汇总为一个整体流，如何例如下面的代码，因为是并行的，所以输出的结果是没有顺序的，如何要有序输出可以将`forEach`换成`forEachOrdered`。
+``` java :no-line-numbers
+@Test
+    public void parallelStreamExample(){
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        numbers.parallelStream()
+                .forEach(System.out::println);
+    }
+```
+![20221015155714](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221015155714.png)
 
 
+## 总结
+
+这里只是简单介绍了一些Stream的常用的使用方法，当然还是有很多不完善，还是一句话，慢慢填坑。
+Stream的有点很明显，简洁明了，代码优雅，但是缺点也很明显，Debug很不友好，开发一时爽，运维火葬场。
