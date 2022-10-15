@@ -57,5 +57,60 @@ Stream的操作一般就是创建流，处理流数据，终止或输出。
 | iterator() |将流转换为Iterator对象foreach()无返回值，对元素进行逐个遍历，然后执行给定的处理逻辑|
 
 
-## Stream部分方法使用
+## Stream的部分方法使用
+
+### map与flatmap
+- `map`必须是一对一的，即一个元素只能转换为一个元素
+- `flatmap` 可以是一对多的，即一个元素可以转换为多个元素， `flatmap`将每个元素返回为一个新的Stream，最后将所有的Stram合并为一个Stream来输出
+![20221015111123](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221015111123.png)
+
+将Integer集合转为String集合
+```java :no-line-numbers
+@Test
+    public void IntegerToString(){
+        List<Integer> integerList = Arrays.asList(1,2,3,4,5,6);
+        List<String> stringList = integerList.stream()
+                .map(item -> Integer.toString(item.intValue()))
+                .collect(Collectors.toList());
+        System.out.println(stringList.get(0).getClass());
+    }
+
+```
+flatmap分词，将连个单词分为单个字母
+```java :no-line-numbers
+@Test
+    public void WordsToLetters(){
+        List<String> words = Arrays.asList("Hello","World");
+        List<String> letters = words.stream()
+                .flatMap(item -> Arrays.stream(item.split("")))
+                .collect(Collectors.toList());
+        letters.forEach(System.out::println);
+    }
+
+```
+
+### peek与foreach
+peek和foreach都是遍历元素并且逐个处理，但是peek为中间管道，foreach为终止管道，在调用终止方法之前，peek是不会执行任何的操作，但是foreach为终止管道，它可以直接执行
+
+```java :no-line-numbers
+@Test
+    public void peekAndForeach(){
+        List<String> list = Arrays.asList("this","is","a","exa");
+        System.out.println("------peek before------");
+        list.stream().peek(System.out::println);
+        System.out.println("------peek after------");
+        System.out.println("------foreach before------");
+        list.stream().forEach(System.out::println);
+        System.out.println("------foreach after------");
+        System.out.println("------peek and foreach------");
+        list.stream().peek(System.out::println)
+                .collect(Collectors.toList());
+    }
+
+```
+![20221015113430](https://blog-1253887276.cos.ap-chongqing.myqcloud.com/vscodeblog/20221015113430.png)
+
+
+
+
 
