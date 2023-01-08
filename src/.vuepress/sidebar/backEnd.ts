@@ -26,4 +26,14 @@ export const backEnd = arraySidebar([
       "SpringBoot动态定时任务"
     ],
   },
+  {
+    text: "微信公众号",
+    //icon: "code",
+    //link: "/docs/",
+    prefix: "/docs/others/",
+    collapsable: true,
+    children: [
+      "微信公众号实现每日推送",
+    ],
+  },
 ]);
