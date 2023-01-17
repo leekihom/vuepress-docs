@@ -27,14 +27,6 @@
                   //bgColor: 'linear-gradient(0deg,#a18cd1 0%, #fbc2eb 100%)',
                   //color: ' rgb(104, 84, 161)',
                 },
-                {
-                  name: '程序员数学',
-                  desc: '程序员数学',
-                  logo: '',
-                  href: '../file/程序员数学v2.0-小傅哥.pdf',
-                  //bgColor: 'linear-gradient(0deg,#a18cd1 0%, #fbc2eb 100%)',
-                  //color: ' rgb(104, 84, 161)',
-                },
             ]
       }
     }
