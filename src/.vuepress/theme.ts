@@ -38,13 +38,12 @@ export default hopeTheme({
     description: "量子力学水平移动建筑工程师",
     intro: "/about/aboutme",
     medias: {
-      Email: "https://example.com",
-      GitHub: "https://example.com",
-      Gmail: "https://example.com",
-      QQ: "https://example.com",
-      Rss: "https://example.com",
-      Steam: "https://example.com",
-      Wechat: "https://example.com"
+      Email: "mailto:leelzh@foxmail.com",
+      GitHub: "https://github.com/leekihom",
+      QQ: "tencent://message/?uin=undefined&amp;Site=&amp;Menu=yes",
+      Rss: "https://www.leezihong.cn/atom.xml",
+      Steam: "https://steamcommunity.com/profiles/76561198343675169/",
+      Wechat: "wechat.jpg"
     },
   },
 
