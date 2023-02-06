@@ -256,6 +256,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 ```
+`UsernamePasswordAuthenticationToken`最终实现的是`Authentication`的方法，我们使用账户密码来认证，所以直接只用它来进行验证就行了。
 ```java
 @Service
 public class LoginServiceImpl implements LoginService {
