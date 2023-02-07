@@ -8,7 +8,7 @@ category:
 tag:
 - Spring Cloud
 - 微服务
-- 注册中心
+- Eureka
 ---
 
 ## 前言
