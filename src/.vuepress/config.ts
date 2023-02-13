@@ -7,7 +7,7 @@ export default defineUserConfig({
   lang: "zh-CN",
   title: "leezihong",
   description: "",
-
+  port: 9090 ,
   base: "/",
 
   theme,
