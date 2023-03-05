@@ -4,11 +4,11 @@ date: 2022-08-29
 breadcrumb: false
 pageInfo: false
 category:
-    - Java
-    - 后端
+- Java
+- 后端
 tag:
-    - 并发
-    - Java
+- 并发
+- Java
 ---
 
 # Java并发-理论基础
