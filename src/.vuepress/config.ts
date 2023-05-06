@@ -14,19 +14,19 @@ export default defineUserConfig({
   // .vuepress/config.ts
 
   plugins: [
-    // docsearchPlugin({
-    //   appId: "",
-    //   apiKey: "",
-    //   indexName: "",
-    // }),
-    searchPlugin({
-      locales: {
-        '/': {
-          placeholder: '搜索',
-        },
-        
-      },
+    docsearchPlugin({
+      appId: "MRIRJTYVAT",
+      apiKey: "6f6505f1c70849707ded6d53db002748",
+      indexName: "leezihong",
     }),
+    // searchPlugin({
+    //   locales: {
+    //     '/': {
+    //       placeholder: '搜索',
+    //     },
+        
+    //   },
+    // }),
   ],
 });
 
