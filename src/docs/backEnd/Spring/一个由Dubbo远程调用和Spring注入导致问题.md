@@ -8,7 +8,7 @@ category:
 tag:
 - Dubbo
 - 依赖注入
-sticky: 100
+sticky: 2023-11-25
 ---
 
 ### 前言
