@@ -7,6 +7,7 @@ category:
 - Redis
 tag:
 - 分布式锁
+sticky: 2023-03-22
 ---
 
 ## 前言

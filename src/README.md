@@ -6,7 +6,7 @@ heroImage: /logo.webp
 heroText: leezihong
 heroFullScreen: true
 bgImage: /bg.jpg
-tagline: 水的清澈， 并非因为它不含杂质，而是在于懂得沉淀；心的通透，不是因为没有杂念，而是在于明白取舍
+tagline: 
 # projects:
 #   - icon: project
 #     name: 项目名称

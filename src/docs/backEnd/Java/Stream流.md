@@ -8,6 +8,7 @@ category:
 tag:
 - Java 8
 - Stream
+sticky: 2022-09-28
 ---
 
 ## 前言

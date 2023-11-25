@@ -9,6 +9,7 @@ tag:
 - Spring Cloud Alibaba
 - 微服务
 - Seata
+sticky: 2022-10-25
 ---
 
 ## 前言

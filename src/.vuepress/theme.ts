@@ -52,7 +52,7 @@ export default hopeTheme({
    */
   encrypt: {
     config: {
-      
+      "/docs/devTools": 'leezihongnb'
     },
     global: false,
     admin: 'leezihongnb',

@@ -8,6 +8,7 @@ category:
 tag:
 - Lambda
 - Java 8
+sticky: 2022-09-28
 ---
 
 ## 前言

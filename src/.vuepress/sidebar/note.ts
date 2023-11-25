@@ -7,7 +7,7 @@ export const note = arraySidebar([
     prefix: "/note/",
     collapsable: false,
     children: [
-      "2022-10-06", 
+      
     ],
   },
 ]);
