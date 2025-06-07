@@ -30,6 +30,10 @@ export default navbar([
     link: "/note/" 
   },
   {
+    text: "📷摄影",
+    link: "/photo/"
+  },
+  {
     text: "🔧工具",
     link: "/tool/"
   },
