@@ -33,8 +33,12 @@ export default navbar([
     text: "🔧工具",
     link: "/tool/"
   },
-  {
+  // {
+  //   text: "🌟关于",
+  //   link: "/about/aboutme"
+  // },
+    {
     text: "🌟关于",
-    link: "/about/aboutme"
+    link: "/about/info"
   },
 ]);
