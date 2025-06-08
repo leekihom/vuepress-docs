@@ -3,7 +3,6 @@ import { arraySidebar } from "vuepress-theme-hope";
 export const photos = arraySidebar([
     {
         text: "Photo",
-        icon: "code",
         prefix: "/photo/",
         collapsable: true,
         children: [

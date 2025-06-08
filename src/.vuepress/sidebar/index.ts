@@ -7,5 +7,5 @@ export const SidebarConfig = sidebar({
   
     "/docs/": backEnd,
     "/note/": note,
-    "/photo/": photos
+    // "/photo/": photos
   });
