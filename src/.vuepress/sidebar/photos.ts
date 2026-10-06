@@ -6,7 +6,7 @@ export const photos = arraySidebar([
         prefix: "/photo/",
         collapsable: true,
         children: [
-            "2025-06-07"
+            // "2025-06-07"
         ],
     }
 ]);
